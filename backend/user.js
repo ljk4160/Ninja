@@ -493,13 +493,12 @@ module.exports = class User {
   }
 //////////////////////////////////////////////
   async #getWSCKCheck() {
-    const s = await api({url: `https://pan.smxy.xyz/sign`}).json();
-    const clientVersion = s['clientVersion']
-    const client = s['client']
-    const sv = s['sv']
-    const st = s['st']
-    const uuid = s['uuid']
-    const sign = s['sign']
+    const clientVersion = '10.1.2';
+    const client = 'android';
+    const sv = '120';
+    const st = '1630392618706';
+    const uuid = '09d53a5653402b1f';
+    const sign = '53904736db53eebc01ca70036e7187d6';
     if (!sv||!st||!uuid||!sign) {
       throw new UserError('获取签名失败，请等待Ninja修理 ！', 200, 200);
     }
