@@ -26,6 +26,9 @@
 
 仓库地址：https://github.com/huiyi9420/ninja
 
+感谢集成上一个兼容2.16.5版本作者
+
+仓库地址: https://github.com/phj233/Ninja
 ## 新
 
 当前：增加备用接口（针对某些半黑号）
