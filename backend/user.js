@@ -6,7 +6,7 @@ const got1 = require('got');
 require('dotenv').config();
 const QRCode = require('qrcode');
 // 新增  , addWSCKEnv, delWSCKEnv, getWSCKEnvs, getWSCKEnvsCount, updateWSCKEnv
-const { addEnv, delEnv, getEnvs, getEnvsCount, updateEnv , addWSCKEnv, delWSCKEnv, getWSCKEnvs, getWSCKEnvsCount, updateWSCKEnv } = require('./ql');
+const { addEnv, delEnv, getEnvs, getEnvsCount, updateEnv , addWSCKEnv, delWSCKEnv, getWSCKEnvs, getWSCKEnvsCount, updateWSCKEnv ,enableEnv } = require('./ql');
 const path = require('path');
 const qlDir = process.env.QL_DIR || '/ql';
 const notifyFile = path.join(qlDir, 'shell/notify.sh');
@@ -218,6 +218,8 @@ module.exports = class User {
       const body = await updateEnv(this.cookie, this.eid);
       if (body.code !== 200) {
         throw new UserError(body.message || '更新账户错误，请重试', 221, body.code || 200);
+      }else{
+        const a = await enableEnv(this.eid);
       }
       this.timestamp = body.data.timestamp;
       message = `欢迎回来，${this.nickName}`;
