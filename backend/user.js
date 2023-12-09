@@ -320,9 +320,11 @@ module.exports = class User {
       const body = await updateWSCKEnv(this.jdwsck, this.wseid);
       if (body.code !== 200) {
         throw new UserError(body.message || '更新账户错误，请重试', 221, body.code || 200);
+      }else{
+        const a = await enableEnv(this.wseid);
       }
       this.timestamp = body.data.timestamp;
-      message = `欢迎回来，${this.nickName}`;
+      message = `WSCK录入成功，${this.nickName}`;
       this.#sendNotify('Ninja 运行通知', `用户 ${this.pin} 已更新 WSCK`);
     }
 
