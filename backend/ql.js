@@ -176,4 +176,19 @@ module.exports.delWSCKEnv = async (wseid) => {
   return body;
 };
 
+module.exports.enableEnv = async (eid) => {
+  const token = await getToken();
+  const body = await api({
+    method: 'put',
+    url: 'api/envs/enable',
+    params: { t: Date.now() },
+    body: JSON.stringify([eid]),
+    headers: {
+      Accept: 'application/json',
+      authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json;charset=UTF-8',
+    },
+  }).json();
+  return body;
+};
 //////////////////////////////////////////////////
